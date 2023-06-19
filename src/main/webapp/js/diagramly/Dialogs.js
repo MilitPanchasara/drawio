@@ -199,47 +199,47 @@ var StorageDialog = function(editorUi, fn, rowLimit)
 	mxUtils.write(hd, mxResources.get('saveDiagramsTo') + ':');
 	div.appendChild(hd);
 	
-	var addButtons = function()
-	{
-		count = 0;
+	// var addButtons = function()
+	// {
+	// 	count = 0;
 		
-		if (typeof window.DriveClient === 'function')
-		{
-			addLogo(IMAGE_PATH + '/google-drive-logo.svg', mxResources.get('googleDrive'), App.MODE_GOOGLE, 'drive');
-		}
+	// 	if (typeof window.DriveClient === 'function')
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/google-drive-logo.svg', mxResources.get('googleDrive'), App.MODE_GOOGLE, 'drive');
+	// 	}
 	
-		if (typeof window.OneDriveClient === 'function')
-		{
-			addLogo(IMAGE_PATH + '/onedrive-logo.svg', mxResources.get('oneDrive'), App.MODE_ONEDRIVE, 'oneDrive');
-		}
+	// 	if (typeof window.OneDriveClient === 'function')
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/onedrive-logo.svg', mxResources.get('oneDrive'), App.MODE_ONEDRIVE, 'oneDrive');
+	// 	}
 	
-		if (urlParams['noDevice'] != '1')
-		{
-			addLogo(IMAGE_PATH + '/osa_drive-harddisk.png', mxResources.get('device'), App.MODE_DEVICE);			
-		}
+	// 	if (urlParams['noDevice'] != '1')
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/osa_drive-harddisk.png', mxResources.get('device'), App.MODE_DEVICE);			
+	// 	}
 		
-		if (isLocalStorage && (urlParams['browser'] == '1' || urlParams['offline'] == '1'))
-		{
-			addLogo(IMAGE_PATH + '/osa_database.png', mxResources.get('browser'), App.MODE_BROWSER);
-		}
+	// 	if (isLocalStorage && (urlParams['browser'] == '1' || urlParams['offline'] == '1'))
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/osa_database.png', mxResources.get('browser'), App.MODE_BROWSER);
+	// 	}
 		
-		if (typeof window.DropboxClient === 'function')
-		{
-			addLogo(IMAGE_PATH + '/dropbox-logo.svg', mxResources.get('dropbox'), App.MODE_DROPBOX, 'dropbox');
-		}
+	// 	if (typeof window.DropboxClient === 'function')
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/dropbox-logo.svg', mxResources.get('dropbox'), App.MODE_DROPBOX, 'dropbox');
+	// 	}
 
-		if (editorUi.gitHub != null)
-		{
-			addLogo(IMAGE_PATH + '/github-logo.svg', mxResources.get('github'), App.MODE_GITHUB, 'gitHub');
-		}
+	// 	if (editorUi.gitHub != null)
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/github-logo.svg', mxResources.get('github'), App.MODE_GITHUB, 'gitHub');
+	// 	}
 		
-		if (editorUi.gitLab != null)
-		{
-			addLogo(IMAGE_PATH + '/gitlab-logo.svg', mxResources.get('gitlab'), App.MODE_GITLAB, 'gitLab');
-		}
-	};
+	// 	if (editorUi.gitLab != null)
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/gitlab-logo.svg', mxResources.get('gitlab'), App.MODE_GITLAB, 'gitLab');
+	// 	}
+	// };
 	
-	div.appendChild(buttons);
+	// div.appendChild(buttons);
 	addButtons();
 
 	var later = document.createElement('span');
@@ -4988,102 +4988,102 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 	buttons.style.textAlign = 'center';
 	var count = 0;
 
-	function addLogo(img, title, mode, clientName)
-	{
-		var button = document.createElement('a');
-		button.style.overflow = 'hidden';
+	// function addLogo(img, title, mode, clientName)
+	// {
+	// 	var button = document.createElement('a');
+	// 	button.style.overflow = 'hidden';
 		
-		var logo = document.createElement('img');
-		logo.src = img;
-		logo.setAttribute('border', '0');
-		logo.setAttribute('align', 'absmiddle');
-		logo.style.width = '60px';
-		logo.style.height = '60px';
-		logo.style.paddingBottom = '6px';
-		button.style.display = 'inline-block';
-		button.className = 'geBaseButton';
-		button.style.position = 'relative';
-		button.style.margin = '4px';
-		button.style.padding = '8px 8px 10px 8px';
-		button.style.whiteSpace = 'nowrap';
+	// 	var logo = document.createElement('img');
+	// 	logo.src = img;
+	// 	logo.setAttribute('border', '0');
+	// 	logo.setAttribute('align', 'absmiddle');
+	// 	logo.style.width = '60px';
+	// 	logo.style.height = '60px';
+	// 	logo.style.paddingBottom = '6px';
+	// 	button.style.display = 'inline-block';
+	// 	button.className = 'geBaseButton';
+	// 	button.style.position = 'relative';
+	// 	button.style.margin = '4px';
+	// 	button.style.padding = '8px 8px 10px 8px';
+	// 	button.style.whiteSpace = 'nowrap';
 		
-		button.appendChild(logo);
+	// 	button.appendChild(logo);
 		
-		button.style.color = 'gray';
-		button.style.fontSize = '11px';
+	// 	button.style.color = 'gray';
+	// 	button.style.fontSize = '11px';
 		
-		var label = document.createElement('div');
-		button.appendChild(label);
-		mxUtils.write(label, title);
+	// 	var label = document.createElement('div');
+	// 	button.appendChild(label);
+	// 	mxUtils.write(label, title);
 		
-		function initButton()
-		{
-			mxEvent.addListener(button, 'click', function()
-			{
-				// Updates extension
-				change(mode);
-				create(mode);
-			});
-		};
+	// 	function initButton()
+	// 	{
+	// 		mxEvent.addListener(button, 'click', function()
+	// 		{
+	// 			// Updates extension
+	// 			change(mode);
+	// 			create(mode);
+	// 		});
+	// 	};
 		
-		// Supports lazy loading
-		if (clientName != null && editorUi[clientName] == null)
-		{
-			logo.style.visibility = 'hidden';
-			mxUtils.setOpacity(label, 10);
-			var size = 12;
+	// 	// Supports lazy loading
+	// 	if (clientName != null && editorUi[clientName] == null)
+	// 	{
+	// 		logo.style.visibility = 'hidden';
+	// 		mxUtils.setOpacity(label, 10);
+	// 		var size = 12;
 			
-			var spinner = new Spinner({
-				lines: 12, // The number of lines to draw
-				length: size, // The length of each line
-				width: 5, // The line thickness
-				radius: 10, // The radius of the inner circle
-				rotate: 0, // The rotation offset
-				color: '#000', // #rgb or #rrggbb
-				speed: 1.5, // Rounds per second
-				trail: 60, // Afterglow percentage
-				shadow: false, // Whether to render a shadow
-				hwaccel: false, // Whether to use hardware acceleration
-				top: '40%',
-				zIndex: 2e9 // The z-index (defaults to 2000000000)
-			});
-			spinner.spin(button);
+	// 		var spinner = new Spinner({
+	// 			lines: 12, // The number of lines to draw
+	// 			length: size, // The length of each line
+	// 			width: 5, // The line thickness
+	// 			radius: 10, // The radius of the inner circle
+	// 			rotate: 0, // The rotation offset
+	// 			color: '#000', // #rgb or #rrggbb
+	// 			speed: 1.5, // Rounds per second
+	// 			trail: 60, // Afterglow percentage
+	// 			shadow: false, // Whether to render a shadow
+	// 			hwaccel: false, // Whether to use hardware acceleration
+	// 			top: '40%',
+	// 			zIndex: 2e9 // The z-index (defaults to 2000000000)
+	// 		});
+	// 		spinner.spin(button);
 			
-			// Timeout after 30 secs
-			var timeout = window.setTimeout(function()
-			{
-				if (editorUi[clientName] == null)
-				{
-					spinner.stop();
-					button.style.display = 'none';
-				}
-			}, 30000);
+	// 		// Timeout after 30 secs
+	// 		var timeout = window.setTimeout(function()
+	// 		{
+	// 			if (editorUi[clientName] == null)
+	// 			{
+	// 				spinner.stop();
+	// 				button.style.display = 'none';
+	// 			}
+	// 		}, 30000);
 			
-			editorUi.addListener('clientLoaded', mxUtils.bind(this, function()
-			{
-				if (editorUi[clientName] != null)
-				{
-					window.clearTimeout(timeout);
-					mxUtils.setOpacity(label, 100);
-					logo.style.visibility = '';
-					spinner.stop();
-					initButton();
-				}
-			}));
-		}
-		else
-		{
-			initButton();
-		}
+	// 		editorUi.addListener('clientLoaded', mxUtils.bind(this, function()
+	// 		{
+	// 			if (editorUi[clientName] != null)
+	// 			{
+	// 				window.clearTimeout(timeout);
+	// 				mxUtils.setOpacity(label, 100);
+	// 				logo.style.visibility = '';
+	// 				spinner.stop();
+	// 				initButton();
+	// 			}
+	// 		}));
+	// 	}
+	// 	else
+	// 	{
+	// 		initButton();
+	// 	}
 
-		buttons.appendChild(button);
+	// 	buttons.appendChild(button);
 		
-		if (++count == rowLimit)
-		{
-			mxUtils.br(buttons);
-			count = 0;
-		}
-	};
+	// 	if (++count == rowLimit)
+	// 	{
+	// 		mxUtils.br(buttons);
+	// 		count = 0;
+	// 	}
+	// };
 
 	if (!showButtons)
 	{
@@ -5099,112 +5099,112 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 	var serviceSelect = document.createElement('select');
 	serviceSelect.style.marginLeft = '10px';
 
-	if (!editorUi.isOfflineApp() && !editorUi.isOffline())
-	{
-		if (typeof window.DriveClient === 'function')
-		{
-			var googleOption = document.createElement('option');
-			googleOption.setAttribute('value', App.MODE_GOOGLE);
-			mxUtils.write(googleOption, mxResources.get('googleDrive'));
-			serviceSelect.appendChild(googleOption);
+	// if (!editorUi.isOfflineApp() && !editorUi.isOffline())
+	// {
+	// 	if (typeof window.DriveClient === 'function')
+	// 	{
+	// 		var googleOption = document.createElement('option');
+	// 		googleOption.setAttribute('value', App.MODE_GOOGLE);
+	// 		mxUtils.write(googleOption, mxResources.get('googleDrive'));
+	// 		serviceSelect.appendChild(googleOption);
 			
-			addLogo(IMAGE_PATH + '/google-drive-logo.svg', mxResources.get('googleDrive'), App.MODE_GOOGLE, 'drive');
-		}
+	// 		addLogo(IMAGE_PATH + '/google-drive-logo.svg', mxResources.get('googleDrive'), App.MODE_GOOGLE, 'drive');
+	// 	}
 		
-		if (typeof window.OneDriveClient === 'function')
-		{
-			var oneDriveOption = document.createElement('option');
-			oneDriveOption.setAttribute('value', App.MODE_ONEDRIVE);
-			mxUtils.write(oneDriveOption, mxResources.get('oneDrive'));
-			serviceSelect.appendChild(oneDriveOption);
+	// 	if (typeof window.OneDriveClient === 'function')
+	// 	{
+	// 		var oneDriveOption = document.createElement('option');
+	// 		oneDriveOption.setAttribute('value', App.MODE_ONEDRIVE);
+	// 		mxUtils.write(oneDriveOption, mxResources.get('oneDrive'));
+	// 		serviceSelect.appendChild(oneDriveOption);
 			
-			if (editorUi.mode == App.MODE_ONEDRIVE)
-			{
-				oneDriveOption.setAttribute('selected', 'selected');
-			}
+	// 		if (editorUi.mode == App.MODE_ONEDRIVE)
+	// 		{
+	// 			oneDriveOption.setAttribute('selected', 'selected');
+	// 		}
 			
-			addLogo(IMAGE_PATH + '/onedrive-logo.svg', mxResources.get('oneDrive'), App.MODE_ONEDRIVE, 'oneDrive');
-		}
+	// 		addLogo(IMAGE_PATH + '/onedrive-logo.svg', mxResources.get('oneDrive'), App.MODE_ONEDRIVE, 'oneDrive');
+	// 	}
 
-		if (typeof window.DropboxClient === 'function')
-		{
-			var dropboxOption = document.createElement('option');
-			dropboxOption.setAttribute('value', App.MODE_DROPBOX);
-			mxUtils.write(dropboxOption, mxResources.get('dropbox'));
-			serviceSelect.appendChild(dropboxOption);
+	// 	if (typeof window.DropboxClient === 'function')
+	// 	{
+	// 		var dropboxOption = document.createElement('option');
+	// 		dropboxOption.setAttribute('value', App.MODE_DROPBOX);
+	// 		mxUtils.write(dropboxOption, mxResources.get('dropbox'));
+	// 		serviceSelect.appendChild(dropboxOption);
 			
-			if (editorUi.mode == App.MODE_DROPBOX)
-			{
-				dropboxOption.setAttribute('selected', 'selected');
-			}
+	// 		if (editorUi.mode == App.MODE_DROPBOX)
+	// 		{
+	// 			dropboxOption.setAttribute('selected', 'selected');
+	// 		}
 			
-			addLogo(IMAGE_PATH + '/dropbox-logo.svg', mxResources.get('dropbox'), App.MODE_DROPBOX, 'dropbox');
-		}
+	// 		addLogo(IMAGE_PATH + '/dropbox-logo.svg', mxResources.get('dropbox'), App.MODE_DROPBOX, 'dropbox');
+	// 	}
 
-		if (editorUi.gitHub != null)
-		{
-			var gitHubOption = document.createElement('option');
-			gitHubOption.setAttribute('value', App.MODE_GITHUB);
-			mxUtils.write(gitHubOption, mxResources.get('github'));
-			serviceSelect.appendChild(gitHubOption);
+	// 	if (editorUi.gitHub != null)
+	// 	{
+	// 		var gitHubOption = document.createElement('option');
+	// 		gitHubOption.setAttribute('value', App.MODE_GITHUB);
+	// 		mxUtils.write(gitHubOption, mxResources.get('github'));
+	// 		serviceSelect.appendChild(gitHubOption);
 			
-			addLogo(IMAGE_PATH + '/github-logo.svg', mxResources.get('github'), App.MODE_GITHUB, 'gitHub');
-		}
+	// 		addLogo(IMAGE_PATH + '/github-logo.svg', mxResources.get('github'), App.MODE_GITHUB, 'gitHub');
+	// 	}
 		
-		if (editorUi.gitLab != null)
-		{
-			var gitLabOption = document.createElement('option');
-			gitLabOption.setAttribute('value', App.MODE_GITLAB);
-			mxUtils.write(gitLabOption, mxResources.get('gitlab'));
-			serviceSelect.appendChild(gitLabOption);
+	// 	if (editorUi.gitLab != null)
+	// 	{
+	// 		var gitLabOption = document.createElement('option');
+	// 		gitLabOption.setAttribute('value', App.MODE_GITLAB);
+	// 		mxUtils.write(gitLabOption, mxResources.get('gitlab'));
+	// 		serviceSelect.appendChild(gitLabOption);
 
-			addLogo(IMAGE_PATH + '/gitlab-logo.svg', mxResources.get('gitlab'), App.MODE_GITLAB, 'gitLab');
-		}
+	// 		addLogo(IMAGE_PATH + '/gitlab-logo.svg', mxResources.get('gitlab'), App.MODE_GITLAB, 'gitLab');
+	// 	}
 
-		if (typeof window.TrelloClient === 'function')
-		{
-			var trelloOption = document.createElement('option');
-			trelloOption.setAttribute('value', App.MODE_TRELLO);
-			mxUtils.write(trelloOption, mxResources.get('trello'));
-			serviceSelect.appendChild(trelloOption);
+	// 	if (typeof window.TrelloClient === 'function')
+	// 	{
+	// 		var trelloOption = document.createElement('option');
+	// 		trelloOption.setAttribute('value', App.MODE_TRELLO);
+	// 		mxUtils.write(trelloOption, mxResources.get('trello'));
+	// 		serviceSelect.appendChild(trelloOption);
 			
-			addLogo(IMAGE_PATH + '/trello-logo.svg', mxResources.get('trello'), App.MODE_TRELLO, 'trello');
-		}
-	}
+	// 		addLogo(IMAGE_PATH + '/trello-logo.svg', mxResources.get('trello'), App.MODE_TRELLO, 'trello');
+	// 	}
+	// }
 	
-	if (!Editor.useLocalStorage || urlParams['storage'] == 'device' ||
-		(editorUi.getCurrentFile() != null/* && !mxClient.IS_IOS*/ && urlParams['noDevice'] != '1'))
-	{
-		var deviceOption = document.createElement('option');
-		deviceOption.setAttribute('value', App.MODE_DEVICE);
-		mxUtils.write(deviceOption, mxResources.get('device'));
-		serviceSelect.appendChild(deviceOption);
+	// if (!Editor.useLocalStorage || urlParams['storage'] == 'device' ||
+	// 	(editorUi.getCurrentFile() != null/* && !mxClient.IS_IOS*/ && urlParams['noDevice'] != '1'))
+	// {
+	// 	var deviceOption = document.createElement('option');
+	// 	deviceOption.setAttribute('value', App.MODE_DEVICE);
+	// 	mxUtils.write(deviceOption, mxResources.get('device'));
+	// 	serviceSelect.appendChild(deviceOption);
 		
-		if (editorUi.mode == App.MODE_DEVICE || !allowBrowser)
-		{
-			deviceOption.setAttribute('selected', 'selected');
-		}
+	// 	if (editorUi.mode == App.MODE_DEVICE || !allowBrowser)
+	// 	{
+	// 		deviceOption.setAttribute('selected', 'selected');
+	// 	}
 		
-		if (showDeviceButton)
-		{
-			addLogo(IMAGE_PATH + '/osa_drive-harddisk.png', mxResources.get('device'), App.MODE_DEVICE);
-		}
-	}
+	// 	if (showDeviceButton)
+	// 	{
+	// 		addLogo(IMAGE_PATH + '/osa_drive-harddisk.png', mxResources.get('device'), App.MODE_DEVICE);
+	// 	}
+	// }
 	
-	if (allowBrowser && isLocalStorage && urlParams['browser'] != '0')
-	{
-		var browserOption = document.createElement('option');
-		browserOption.setAttribute('value', App.MODE_BROWSER);
-		mxUtils.write(browserOption, mxResources.get('browser'));
-		serviceSelect.appendChild(browserOption);
+	// if (allowBrowser && isLocalStorage && urlParams['browser'] != '0')
+	// {
+	// 	var browserOption = document.createElement('option');
+	// 	browserOption.setAttribute('value', App.MODE_BROWSER);
+	// 	mxUtils.write(browserOption, mxResources.get('browser'));
+	// 	serviceSelect.appendChild(browserOption);
 		
-		if (editorUi.mode == App.MODE_BROWSER)
-		{
-			browserOption.setAttribute('selected', 'selected');
-		}
+	// 	if (editorUi.mode == App.MODE_BROWSER)
+	// 	{
+	// 		browserOption.setAttribute('selected', 'selected');
+	// 	}
 		
-		addLogo(IMAGE_PATH + '/osa_database.png', mxResources.get('browser'), App.MODE_BROWSER);
-	}
+	// 	addLogo(IMAGE_PATH + '/osa_database.png', mxResources.get('browser'), App.MODE_BROWSER);
+	// }
 
 	function change(newMode)
 	{

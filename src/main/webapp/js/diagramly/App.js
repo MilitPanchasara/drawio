@@ -3781,14 +3781,19 @@ App.prototype.showSplash = function(force)
 	{
 		var rowLimit = (serviceCount == 4) ? 2 : 3;
 		
-		var dlg = new StorageDialog(this, mxUtils.bind(this, function()
-		{
-			this.hideDialog();
-			showSecondDialog();
-		}), rowLimit);
+		// var dlg = new StorageDialog(this, mxUtils.bind(this, function()
+		// {
+		// 	this.hideDialog();
+		// 	showSecondDialog();
+		// }), rowLimit);
+
+		var prev = Editor.useLocalStorage;
+		this.createFile(this.defaultFilename,
+			null, null, null, null, null, null, true);
+		Editor.useLocalStorage = prev;
 		
-		this.showDialog(dlg.container, (rowLimit < 3) ? 200 : 300,
-			((serviceCount > 3) ? 320 : 210), true, false);
+		// this.showDialog(dlg.container, (rowLimit < 3) ? 200 : 300,
+		// 	((serviceCount > 3) ? 320 : 210), true, false);
 	}
 	else if (urlParams['create'] == null)
 	{
@@ -4699,7 +4704,7 @@ App.prototype.saveFile = function(forceDialog, success)
 					this.hideDialog();
 				}), mxResources.get('saveAs'), mxResources.get('download'), null, null, allowTab,
 					null, true, rowLimit, null, null, null, this.editor.fileExtensions, false);
-				this.showDialog(dlg.container, 420, (serviceCount > rowLimit) ? 390 : 280, true, true);
+				this.showDialog(dlg.container, 420, 150, true, true);
 				dlg.init();
 			}
 		}
@@ -5995,98 +6000,6 @@ App.prototype.updateButtonContainer = function()
 		{
 			this.commentButton.parentNode.removeChild(this.commentButton);
 			this.commentButton = null;
-		}
-		
-		// Share
-		if (this.getServiceName() == 'draw.io' &&
-			urlParams['embed'] != '1' &&
-			!this.isStandaloneApp())
-		{
-			if (file != null)
-			{
-				if (this.shareButton == null && Editor.currentTheme != 'atlas')
-				{
-					this.shareButton = document.createElement('button');
-					this.shareButton.className = 'geBtn geShareBtn';
-					this.shareButton.style.display = 'inline-block';
-					this.shareButton.style.position = 'relative';
-					this.shareButton.style.backgroundImage = 'none';
-					this.shareButton.style.padding = '2px 10px 0 10px';
-					this.shareButton.style.marginTop = '-10px';
-					this.shareButton.style.cursor = 'pointer';
-					this.shareButton.style.height = '32px';
-					this.shareButton.style.minWidth = '0px';
-					this.shareButton.style.top = '-2px';
-					this.shareButton.setAttribute('title', mxResources.get('share'));
-					
-					var icon = document.createElement('img');
-					icon.className = 'geInverseAdaptiveAsset';
-					icon.setAttribute('src', this.shareImage);
-					icon.setAttribute('align', 'absmiddle');
-					icon.style.marginRight = '4px';
-					icon.style.marginTop = '-3px';
-					this.shareButton.appendChild(icon);
-					
-					if (Editor.currentTheme != 'atlas')
-					{
-						icon.style.filter = 'invert(100%)';
-					}
-					
-					mxUtils.write(this.shareButton, mxResources.get('share'));
-					
-					mxEvent.addListener(this.shareButton, 'click', mxUtils.bind(this, function()
-					{
-						this.actions.get('share').funct();
-					}));
-					
-					this.buttonContainer.appendChild(this.shareButton);
-				}
-
-				if (this.shareButton != null)
-				{
-					this.shareButton.style.display = (Editor.currentTheme == 'simple' ||
-						Editor.currentTheme == 'sketch' || Editor.currentTheme == 'min')
-						? 'none' : 'inline-block';
-					
-					// Hides parent element if empty for flex layout gap to work
-					if (Editor.currentTheme == 'simple' ||
-						Editor.currentTheme == 'sketch')
-					{
-						this.shareButton.parentNode.style.display =
-							(this.shareButton.parentNode.clientWidth == 0)
-							? 'none' : '';
-					}
-				}
-			}
-			else if (this.shareButton != null)
-			{
-				this.shareButton.parentNode.removeChild(this.shareButton);
-				this.shareButton = null;
-			}
-
-			// Fetch notifications
-			if (urlParams['extAuth'] != '1' && 
-				Editor.currentTheme != 'atlas') //Disable notification with external auth (e.g, Teams app)
-			{
-				this.fetchAndShowNotification('online', this.mode);
-			}
-		}
-		else
-		{
-			if (urlParams['notif'] != null) //Notif for embed mode
-			{
-				this.fetchAndShowNotification(urlParams['notif']);
-			}
-
-			// Hides button container if empty for flex layout gap to work
-			if (this.isStandaloneApp() &&
-				(Editor.currentTheme == 'simple' ||
-				Editor.currentTheme == 'sketch'))
-			{
-				this.buttonContainer.style.display =
-					(this.buttonContainer.clientWidth == 0)
-					? 'none' : '';
-			}
 		}
 
 		// Updates comments button CSS

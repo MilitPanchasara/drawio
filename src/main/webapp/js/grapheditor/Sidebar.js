@@ -32,9 +32,6 @@ function Sidebar(editorUi, container)
 	this.wrapper.style.maxHeight = 'calc(100% - ' + this.moreShapesHeight + 'px)';
 	this.container.appendChild(this.wrapper);
 
-	var title = this.createMoreShapes();
-	this.container.appendChild(title);
-
 	document.body.appendChild(this.graph.container);
 	
 	this.pointerUpHandler = mxUtils.bind(this, function()
@@ -110,11 +107,11 @@ Sidebar.prototype.init = function()
 {
 	var dir = STENCIL_PATH;
 	
-	this.addSearchPalette(true);
-	this.addGeneralPalette(true);
-	this.addMiscPalette(false);
-	this.addAdvancedPalette(false);
-	this.addBasicPalette(dir);
+	// this.addSearchPalette(true);
+	// this.addGeneralPalette(true);
+	// this.addMiscPalette(false);
+	// this.addAdvancedPalette(false);
+	// this.addBasicPalette(dir);
 	
 	this.setCurrentSearchEntryLibrary('arrows');
 	this.addStencilPalette('arrows', mxResources.get('arrows'), dir + '/arrows.xml',
@@ -362,54 +359,6 @@ Sidebar.prototype.getTooltipOffset = function(elt, bounds)
 	return new mxPoint(this.container.offsetWidth + 2 + this.editorUi.container.offsetLeft,
 		Math.min(bottom - height - 20 /*status bar*/, Math.max(0, (this.editorUi.container.offsetTop +
 			this.container.offsetTop + elt.offsetTop - this.wrapper.scrollTop - height / 2 + 16))));
-};
-
-/**
- * Adds all palettes to the sidebar.
- */
-Sidebar.prototype.createMoreShapes = function()
-{
-	var div =  this.editorUi.createDiv('geSidebarFooter');
-	div.style.position = 'absolute';
-	div.style.overflow = 'hidden';
-	div.style.display = 'inline-flex';
-	div.style.alignItems = 'center';
-	div.style.justifyContent = 'center';
-	div.style.width = '100%';
-	div.style.marginTop = '-1px';
-	div.style.height = this.moreShapesHeight+ 'px';
-	
-	var title = document.createElement('button');
-	title.className = 'geBtn gePrimaryBtn';
-	title.style.display = 'inline-flex';
-	title.style.alignItems = 'center';
-	title.style.whiteSpace = 'nowrap';
-	title.style.padding = '8px';
-	title.style.margin = '0px';
-	title.innerHTML = '<span>+</span>';
-	
-	var span = title.getElementsByTagName('span')[0];
-	span.style.fontSize = '18px';
-	span.style.marginRight = '5px';
-
-	mxUtils.write(title, mxResources.get('moreShapes'));
-
-	// Prevents focus
-	mxEvent.addListener(title, (mxClient.IS_POINTER) ? 'pointerdown' : 'mousedown',
-		mxUtils.bind(this, function(evt)
-	{
-		evt.preventDefault();
-	}));
-	
-	mxEvent.addListener(title, 'click', mxUtils.bind(this, function(evt)
-	{
-		this.editorUi.actions.get('shapes').funct();
-		mxEvent.consume(evt);
-	}));
-	
-	div.appendChild(title);
-	
-	return div;
 };
 
 /**
